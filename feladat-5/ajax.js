@@ -67,6 +67,26 @@ async function del(id) {
 
 async function edit(id) {
   $("status").innerHTML = "Editing...";
+  await fetch(url, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded",
+    },
+    cache: "no-cache",
+    body: "op=update&code=" + $("code").value + "&height=" +
+      $("height-" + id).value +
+      "&weight=" + $("weight-" + id).value + "&name=" + $("name-" + id).value +
+      "&id=" + id,
+  }).then((data) => data.text())
+    .then((data) => {
+      if (Number(data) === 0) {
+        console.log("error");
+        return;
+      }
+      read();
+    }).catch((error) => {
+      console.log(error);
+    });
 }
 
 async function add() {
