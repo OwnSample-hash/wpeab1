@@ -98,12 +98,17 @@ async function add() {
     },
     cache: "no-cache",
     body: "op=create&code=" + $("code").value + "&height=" + $("height").value +
-      "&weight=" + $("weight").value,
-  }).then((_) => {
-    //TODO: add new row
-  }).catch((error) => {
-    console.log(error);
-  });
+      "&weight=" + $("weight").value + "&name=" + $("name").value,
+  }).then((data) => data.text())
+    .then((data) => {
+      if (Number(data) === 0) {
+        console.log("error");
+        return;
+      }
+      read();
+    }).catch((error) => {
+      console.log(error);
+    });
 }
 
 function appendInsertRow() {
