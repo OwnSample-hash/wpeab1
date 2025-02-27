@@ -8,14 +8,20 @@
   <link rel="stylesheet" href="/ajax.css">
  </head>
  <body class="bg" onload="appendInsertRow()">
-  <div class="py-2">
+  <div class="py-2 flex">
     <span class="text px-2">Code</span>
     <input id="code" value="asdf"/>
     <button type="" onclick="read()">Read</button>
+    <div class="px-2">
+      <div class="bg-green py-0-5">
+        Satus: <span id="status">-</span>
+      </div>
+    </div>
   </div>
   <table class="border-1 rounded" id="tbl">
     <tr>
       <th class="text py-2 px-2">Id</th>
+      <th class="text py-2 px-2">Name</th>
       <th class="text py-2 px-2">Height</th>
       <th class="text py-2 px-2">Weight</th>
       <th class="text py-2 px-2">Edit</th>

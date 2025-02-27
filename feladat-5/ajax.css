@@ -2,6 +2,10 @@
   background-color: #1c1c1c;
 }
 
+.bg-green {
+  background-color: #00ac00;
+}
+
 .text {
   color: #ccc;
 }
@@ -29,3 +33,11 @@
   padding-bottom: 0.5em;
 }
 
+.py-0-5 {
+  padding-top: 0.125em;
+  padding-bottom: 0.125em;
+}
+
+.flex {
+  display: flex;
+}
