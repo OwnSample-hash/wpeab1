@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>5. Feladat AJAX</title>
+  <script src="/ajax.js"></script>
+  <link rel="stylesheet" href="/ajax.css">
+</head>
+
+<body class="bg" onload="appendInsertRow()">
+  <div class="py-2 flex">
+    <span class="text px-2">Code</span>
+    <input id="code" value="asdf" class="px-2 mx-2 rounded" />
+    <button type="" onclick="read()">Read</button>
+    <div class="px-2">
+      <div class="bg-green py-0-5 rounded mx-2 px-2" id="status-container">
+        Satus: <span id="status">-</span>
+      </div>
+    </div>
+  </div>
+  <table class="border-1 rounded" id="tbl">
+    <tr>
+      <th class="text py-2 px-2">Id</th>
+      <th class="text py-2 px-2">Name</th>
+      <th class="text py-2 px-2">Height</th>
+      <th class="text py-2 px-2">Weight</th>
+      <th class="text py-2 px-2">Update</th>
+      <th class="text py-2 px-2">Delete</th>
+    </tr>
+  </table>
+  <div class="py-2">
+    <table class="border-1 rounded">
+      <tr>
+        <th class="text py2- px2">Height</th>
+        <th class="text py2- px2">Sum</th>
+        <th class="text py2- px2">Avg</th>
+        <th class="text py2- px2">Max</th>
+      </tr>
+      <tr id="height-data">
+        <td class="text py2- px2"></td>
+        <td class="text py2- px2" id="height-sum">-</td>
+        <td class="text py2- px2" id="height-avg">-</td>
+        <td class="text py2- px2" id="height-max">-</td>
+      </tr>
+    </table>
+  </div>
+</body>
+
+</html>
