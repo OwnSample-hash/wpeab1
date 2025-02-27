@@ -11,6 +11,7 @@ function removeRow(id) {
 }
 
 async function read() {
+  $("status").innerHTML = "Reading...";
   await fetch(url, {
     method: "POST",
     headers: {
@@ -46,6 +47,7 @@ async function read() {
 }
 
 async function del(id) {
+  $("status").innerHTML = "Deleting...";
   await fetch(url, {
     method: "POST",
     headers: {
@@ -62,10 +64,11 @@ async function del(id) {
 }
 
 async function edit(id) {
-  console.log("edit", id);
+  $("status").innerHTML = "Editing...";
 }
 
 async function add() {
+  $("status").innerHTML = "Adding...";
   await fetch(url, {
     method: "POST",
     headers: {
@@ -88,6 +91,7 @@ function appendInsertRow() {
       <td class="text py-2 px-2"><input id="weight" placeholder="21"/></td>
       <td class="text py-2 px-2" colspan="2"><a onclick="add()" class="ptr">Add</a></td>
     </tr>`;
+  $("status").innerHTML = "Number of rows: " + ids.length;
 }
 
 function removeInsertRow() {
