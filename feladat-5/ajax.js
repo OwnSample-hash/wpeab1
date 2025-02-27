@@ -6,12 +6,17 @@ function $(id) {
 
 ids = [];
 
-function removeRow(id) {
-  $("row-" + id).remove();
+function setStatus(text, isError = false) {
+  $("status").innerHTML = text;
+  if (isError) {
+    $("status-container").className = "bg-red py-0-5 rounded mx-2 px-2";
+  } else {
+    $("status-container").className = "bg-green py-0-5 rounded mx-2 px-2";
+  }
 }
 
 async function read() {
-  $("status").innerHTML = "Reading...";
+  setStatus("Reading...");
   await fetch(url, {
     method: "POST",
     headers: {
@@ -33,15 +38,23 @@ async function read() {
         <th class="text py-2 px-2">Delete</th>
       </tr>`;
       ids = [];
-      sort = data.list.sort((a, b) => a.id - b.id);
+      heights = data.list.map((row) => Number(row.height));
+      $("height-stuff").innerHTML = "Sum: " + ((arr) =>
+        arr.reduce((acc, curr) => acc + curr, 0))(heights) +
+        " Avg: " + ((arr) =>
+          arr.reduce((acc, curr) => acc + curr, 0) / arr.length)(heights) +
+        " Max: " + Math.max(...heights);
+      sort = data.list.sort((a, b) =>
+        a.id - b.id
+      );
       for (const row of data.list) {
         $("tbl").innerHTML += `<tr id="row-${row.id}">
           <td class="text py-2 px-2">${row.id}</td>
-          <td class="text py-2 px-2"><input id="name-${row.id}" value="${row.name}"/></td>
-          <td class="text py-2 px-2"><input id="height-${row.id}" value="${row.height}"/></td>
-          <td class="text py-2 px-2"><input id="weight-${row.id}" value="${row.weight}"/></td>
-          <td class="text py-2 px-2"><a onclick="edit(${row.id})" class="ptr">Edit</a></td>
-          <td class="text py-2 px-2"><a onclick="del(${row.id})" class="ptr">Delete</a></td>
+          <td class="text py-2 px-2"><input class="rounded" id="name-${row.id}" value="${row.name}"/></td>
+          <td class="text py-2 px-2"><input class="rounded" id="height-${row.id}" value="${row.height}"/></td>
+          <td class="text py-2 px-2"><input class="rounded" id="weight-${row.id}" value="${row.weight}"/></td>
+          <td class="text py-2 px-2"><a onclick="_edit(${row.id})" class="ptr">Update</a></td>
+          <td class="text py-2 px-2"><a onclick="_del(${row.id})" class="ptr">Delete</a></td>
         </tr>`;
         ids.push(row.id);
       }
@@ -49,8 +62,8 @@ async function read() {
     });
 }
 
-async function del(id) {
-  $("status").innerHTML = "Deleting...";
+async function _del(id) {
+  setStatus("Deleting...");
   await fetch(url, {
     method: "POST",
     headers: {
@@ -63,11 +76,12 @@ async function del(id) {
   })
     .catch((error) => {
       console.log(error);
+      setStatus("Error", true);
     });
 }
 
-async function edit(id) {
-  $("status").innerHTML = "Editing...";
+async function _edit(id) {
+  setStatus("Editing...");
   await fetch(url, {
     method: "POST",
     headers: {
@@ -82,16 +96,18 @@ async function edit(id) {
     .then((data) => {
       if (Number(data) === 0) {
         console.log("error");
+        setStatus("Error", true);
         return;
       }
       read();
     }).catch((error) => {
+      setStatus("Error", true);
       console.log(error);
     });
 }
 
-async function add() {
-  $("status").innerHTML = "Adding...";
+async function _add() {
+  setStatus("Adding...");
   await fetch(url, {
     method: "POST",
     headers: {
@@ -104,10 +120,12 @@ async function add() {
     .then((data) => {
       if (Number(data) === 0) {
         console.log("error");
+        setStatus("Error", true);
         return;
       }
       read();
     }).catch((error) => {
+      setStatus("Error", true);
       console.log(error);
     });
 }
@@ -115,10 +133,10 @@ async function add() {
 function appendInsertRow() {
   $("tbl").innerHTML += `<tr id="insertRow">
       <td class="text py-2 px-2">Id</td>
-      <td class="text py-2 px-2"><input id="name" placeholder="Fgh"/></td>
-      <td class="text py-2 px-2"><input id="height" placeholder="12"/></td>
-      <td class="text py-2 px-2"><input id="weight" placeholder="21"/></td>
-      <td class="text py-2 px-2" colspan="2"><a onclick="add()" class="ptr">Add</a></td>
+      <td class="text py-2 px-2"><input class="rounded" id="name" placeholder="Fgh"/></td>
+      <td class="text py-2 px-2"><input class="rounded" id="height" placeholder="12"/></td>
+      <td class="text py-2 px-2"><input class="rounded" id="weight" placeholder="21"/></td>
+      <td class="text py-2 px-2" colspan="2"><a onclick="_add()" class="ptr">Add</a></td>
   </tr>`;
   $("status").innerHTML = "Number of rows: " + ids.length;
 }

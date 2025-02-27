@@ -6,6 +6,11 @@
   background-color: #00ac00;
 }
 
+.bg-red {
+  background-color: #ac0000;
+}
+
+
 .text {
   color: #ccc;
 }
@@ -38,6 +43,15 @@
   padding-bottom: 0.125em;
 }
 
+.mx-2 {
+  margin-left: 0.5em;
+  margin-right: 0.5em;
+}
+
 .flex {
   display: flex;
+}
+
+.err {
+  border: 0.25em solid #ac0000;
 }
