@@ -10,11 +10,9 @@
   background-color: #ac0000;
 }
 
-
 .text {
   color: #ccc;
 }
-
 
 .border-1 {
   border: 0.25em solid #3c3c3c;
@@ -52,6 +50,6 @@
   display: flex;
 }
 
-.err {
+.br-red {
   border: 0.25em solid #ac0000;
 }
