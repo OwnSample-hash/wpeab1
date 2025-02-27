@@ -59,7 +59,7 @@ async function del(id) {
     cache: "no-cache",
     body: "op=delete&code=" + $("code").value + "&id=" + id,
   }).then((_) => {
-    $("row-" + id).remove();
+    read();
   })
     .catch((error) => {
       console.log(error);
