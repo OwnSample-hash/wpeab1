@@ -26,6 +26,7 @@ async function read() {
       removeInsertRow();
       $("tbl").innerHTML = `<tr>
         <th class="text py-2 px-2">Id</th>
+        <th class="text py-2 px-2">Name</th>
         <th class="text py-2 px-2">Height</th>
         <th class="text py-2 px-2">Weight</th>
         <th class="text py-2 px-2">Edit</th>
@@ -35,8 +36,9 @@ async function read() {
       for (const row of data.list) {
         $("tbl").innerHTML += `<tr id="row-${row.id}">
           <td class="text py-2 px-2">${row.id}</td>
-          <td class="text py-2 px-2"><input name="height" value="${row.height}"/></td>
-          <td class="text py-2 px-2"><input name="weight" value="${row.weight}"/></td>
+          <td class="text py-2 px-2"><input id="name-${row.id}" value="${row.name}"/></td>
+          <td class="text py-2 px-2"><input id="height-${row.id}" value="${row.height}"/></td>
+          <td class="text py-2 px-2"><input id="weight-${row.id}" value="${row.weight}"/></td>
           <td class="text py-2 px-2"><a onclick="edit(${row.id})" class="ptr">Edit</a></td>
           <td class="text py-2 px-2"><a onclick="del(${row.id})" class="ptr">Delete</a></td>
         </tr>`;
@@ -87,10 +89,11 @@ async function add() {
 function appendInsertRow() {
   $("tbl").innerHTML += `<tr id="insertRow">
       <td class="text py-2 px-2">Id</td>
+      <td class="text py-2 px-2"><input id="name" placeholder="Fgh"/></td>
       <td class="text py-2 px-2"><input id="height" placeholder="12"/></td>
       <td class="text py-2 px-2"><input id="weight" placeholder="21"/></td>
       <td class="text py-2 px-2" colspan="2"><a onclick="add()" class="ptr">Add</a></td>
-    </tr>`;
+  </tr>`;
   $("status").innerHTML = "Number of rows: " + ids.length;
 }
 
