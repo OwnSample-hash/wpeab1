@@ -33,6 +33,7 @@ async function read() {
         <th class="text py-2 px-2">Delete</th>
       </tr>`;
       ids = [];
+      sort = data.list.sort((a, b) => a.id - b.id);
       for (const row of data.list) {
         $("tbl").innerHTML += `<tr id="row-${row.id}">
           <td class="text py-2 px-2">${row.id}</td>
