@@ -12,10 +12,20 @@
 
 .text {
   color: #ccc;
+  text-decoration: none;
+}
+
+a {
+  color: #ccc;
+  text-decoration: none;
 }
 
 .border-1 {
   border: 0.25em solid #3c3c3c;
+}
+
+.border-b-1 {
+  border-bottom: 0.25em solid #3c3c3c;
 }
 
 .rounded {
@@ -52,4 +62,8 @@
 
 .br-red {
   border: 0.25em solid #ac0000;
+}
+
+.tr:hover {
+  background-color: #6c6c6c;
 }

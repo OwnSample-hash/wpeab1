@@ -5,11 +5,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>5. Feladat AJAX</title>
-  <script src="/ajax.js"></script>
+  <script src="/template.js"></script>
+  <script src="ajax.js"></script>
   <link rel="stylesheet" href="/style.css">
 </head>
 
 <body class="bg" onload="appendInsertRow()">
+  <nav id="menu" class="flex py-2"></nav>
   <div class="py-2 flex">
     <span class="text px-2">Code</span>
     <input id="code" value="asdf" class="px-2 mx-2 rounded" />
@@ -46,6 +48,9 @@
       </tr>
     </table>
   </div>
+  <script>
+    template("menu", "/nav.html");
+  </script>
 </body>
 
 </html>
