@@ -10,9 +10,18 @@
   background-color: #ac0000;
 }
 
+@font-face {
+  font-family: "Bedstead";
+  src: url("/bedstead.regular.otf");
+}
+
 .text {
   color: #ccc;
   text-decoration: none;
+}
+
+body {
+  font-family: "Bedstead", sans-serif;
 }
 
 a {
@@ -56,6 +65,27 @@ a {
   margin-right: 0.5em;
 }
 
+mb-auto {
+  margin-bottom: auto;
+}
+
+mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+w-full {
+  width: 100%;
+}
+
+h-full {
+  height: 100%;
+}
+
+max-w-screen-xl {
+  max-width: 80rem;
+}
+
 .flex {
   display: flex;
 }
@@ -66,4 +96,16 @@ a {
 
 .tr:hover {
   background-color: #6c6c6c;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+footer {
+  position: fixed;
+  left: 0px;
+  bottom: 0px;
+  height: 30px;
+  width: 100%;
 }
