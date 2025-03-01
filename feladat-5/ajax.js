@@ -47,7 +47,14 @@ async function read() {
     cache: "no-cache",
     body: "op=read&code=" + $("code").value,
   })
-    .then((data) => data.text())
+    .then((data) => {
+      if (!data.ok) {
+        console.log("error");
+        setStatus("Error", true);
+        return;
+      }
+      return data.text();
+    })
     .then((data) => {
       data = JSON.parse(data);
       removeInsertRow();
@@ -88,7 +95,12 @@ async function _del(id) {
     },
     cache: "no-cache",
     body: "op=delete&code=" + $("code").value + "&id=" + id,
-  }).then((_) => {
+  }).then((data) => {
+    if (!data.ok) {
+      console.log("error");
+      setStatus("Error", true);
+      return;
+    }
     read();
   })
     .catch((error) => {
@@ -109,7 +121,14 @@ async function _edit(id) {
       $("height-" + id).value +
       "&weight=" + $("weight-" + id).value + "&name=" + $("name-" + id).value +
       "&id=" + id,
-  }).then((data) => data.text())
+  }).then((data) => {
+    if (!data.ok) {
+      console.log("error");
+      setStatus("Error", true);
+      return;
+    }
+    return data.text();
+  })
     .then((data) => {
       if (Number(data) === 0) {
         console.log("error");
@@ -133,7 +152,14 @@ async function _add() {
     cache: "no-cache",
     body: "op=create&code=" + $("code").value + "&height=" + $("height").value +
       "&weight=" + $("weight").value + "&name=" + $("name").value,
-  }).then((data) => data.text())
+  }).then((data) => {
+    if (!data.ok) {
+      console.log("error");
+      setStatus("Error", true);
+      return;
+    }
+    return data.text();
+  })
     .then((data) => {
       if (Number(data) === 0) {
         console.log("error");
