@@ -20,38 +20,38 @@
         <h1 class="text-center text-4xl py-4 text">Todo App</h1>
         <div class="flex justify-center py-2">
           <div class="w-1/2">
-            <label for="todoTitle" class="text">Title</label>
+            <label for="todoTitle" class="text fs-6">Title</label>
           </div>
           <div class="w-1/4">
-            <input type="text" id="todoTitle" name="todoTitle" class="p-2 rounded" placeholder="Title"
+            <input type="text" id="todoTitle" name="todoTitle" class="p-2 rounded input-ph" placeholder="Title"
               onkeyup="_validateInput('todoTitle')" />
           </div>
         </div>
         <div class="flex justify-center py-2">
           <div class="w-1/2">
-            <label for="todoDesc" class="text">Description</label>
+            <label for="todoDesc" class="text fs-6">Description</label>
           </div>
           <div class="w-1/4">
-            <input type="text" id="todoDesc" class="p-2 rounded" placeholder="Description"
+            <input type="text" id="todoDesc" class="p-2 rounded input-ph" placeholder="Description"
               onkeyup="_validateInput('todoDesc')" />
           </div>
         </div>
         <div class="flex justify-center py-2">
           <div class="w-1/2">
-            <label class="text" for="todoUrgent">Is Urgent</label>
+            <label class="text fs-6" for="todoUrgent">Is Urgent</label>
           </div>
           <div class="w-1/4">
-            <select name="todoUrgent" id="todoUrgent" class="p-2 rounded">
+            <select name="todoUrgent" id="todoUrgent" class="p-2 rounded input-ph">
               <option value="0" selected>No</option>
               <option value="1">Yes</option>
             </select>
           </div>
         </div>
         <div class="flex justify-center py-2">
-          <button id="saveTodo" class="w-1/4 p-2 rounded bg-btn shadow">Save</button>
-          <button id="loadTodo" class="w-1/4 p-2 rounded bg-btn shadow mx-2">Load</button>
-          <button id="addTodo" class="w-1/4 p-2 rounded bg-btn shadow" onclick="addTask()">Add</button>
-          <button id="clearTodo" class="w-1/4 p-2 rounded bg-btn shadow mx-2" onclick="clearTasks()">Clear</button>
+          <button id="saveTodo" class="w-1/4 p-2 rounded bg-btn shadow fs-6">Save</button>
+          <button id="loadTodo" class="w-1/4 p-2 rounded bg-btn shadow fs-6 mx-2">Load</button>
+          <button id="addTodo" class="w-1/4 p-2 rounded bg-btn shadow fs-6" onclick="addTask()">Add</button>
+          <button id="clearTodo" class="w-1/4 p-2 rounded bg-btn shadow fs-6 mx-2" onclick="clearTasks()">Clear</button>
           <input type="file" id="todoFile" class="hidden" onchange="loadFile(event)" accept="application/json" />
         </div>
         <div class="flex justify-center py-2">
@@ -67,7 +67,7 @@
       </div>
     </div>
   </div>
-  <footer class="w-full text mx-auto flex justify-center py-2" id="footer"></footer>
+  <footer class="w-full text mx-auto flex justify-center" id="footer"></footer>
   <script>
     template("menu", "/nav.html");
     template("footer", "/footer.html");

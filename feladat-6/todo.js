@@ -32,15 +32,17 @@ class Task {
         <p>Is urgent: ${this.isUrgent ? "Yes" : "No"}</p>
         `;
     let button = document.createElement("button");
-    button.classList.add("bg-btn", "rounded");
+    button.classList.add("rounded");
     if (this.isNotDone) {
       button.innerHTML = "Mark done!";
       button.onclick = () => {
         this.markDone();
       };
+      button.classList.add("bg-btn");
     } else {
       button.innerHTML = "Done!";
       button.disabled = true;
+      button.classList.add("btn-disabled");
     }
     div.appendChild(button);
     if (redraw) {
@@ -57,14 +59,15 @@ class Task {
 
   markDone() {
     this.isNotDone = false;
-    this.classes.push("bg-green", "p-2", "my-2", "mx-2");
+    this.classes = this.classes.filter((c) => c !== "bg-1");
+    this.classes.push("bg-green");
     this.render(`task-${this.i}`, true);
   }
 }
 
 class UrgentTask extends Task {
-  constructor(title, desc, i) {
-    super(title, desc, i);
+  constructor(title, desc, isNotDone, i) {
+    super(title, desc, isNotDone, i);
     this.classes = ["bg-red", "text", "rounded", "p-2", "my-2", "mx-2"];
     this.isUrgent = true;
   }
@@ -72,9 +75,9 @@ class UrgentTask extends Task {
 
 function newTask(title, desc, isUrgent, isNotDone, i) {
   if (isUrgent) {
-    return new UrgentTask(title, desc, i);
+    return new UrgentTask(title, desc, isNotDone, i);
   }
-  return new Task(title, desc, i);
+  return new Task(title, desc, isNotDone, i);
 }
 
 function _validateInput(fieldId) {
@@ -97,16 +100,25 @@ function addTask() {
   if (!_validateInput("todoTitle") || !_validateInput("todoDesc")) {
     return;
   }
-  let task = newTask($("todoTitle").value, $("todoDesc").value, $("todoUrgent").value === "1" ? true : false, false, tasks.length);
+  let task = newTask($("todoTitle").value, $("todoDesc").value, $("todoUrgent").value === "1" ? true : false, true, tasks.length);
   tasks.push(task);
   task.render("tasks");
 }
 
 function save() {
-  localStorage.setItem("tasks", JSON.stringify(tasks));
+  localStorage.setItem("tasks", JSON.stringify(tasks, (k, v) => {
+    if (k === "classes" || k === "i") {
+      return undefined;
+    }
+    return v;
+  }, 0));
 }
 
 function load() {
+  if (tasks.length > 0) {
+    alert("Tasks already loaded!\nPlease clear tasks first or hold shift for loading a json file!");
+    return;
+  }
   if (!localStorage.getItem("tasks")) {
     alert("No tasks saved!");
     return;
