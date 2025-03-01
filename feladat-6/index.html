@@ -2,80 +2,77 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>6. Feladat OOJS</title>
-    <link rel="stylesheet" href="/style.css">
-    <script src="/template.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>6. Feladat OOJS</title>
+  <link rel="stylesheet" href="/style.css">
+  <script src="/template.js"></script>
 </head>
 
 <body class="bg">
-    <header>
-        <nav id="menu" class="flex py-2"></nav>
-    </header>
-    <div class="content">
-        <div class="flex">
-            <div class="w-1/3"></div>
-            <div class="grid grid-cols-1 grid-rows-4 w-1/3">
-                <h1 class="text-center text-4xl py-4 text">Todo App</h1>
-                <div class="flex justify-center py-2">
-                    <div class="w-1/2">
-                        <label for="todoTitle" class="text">Title</label>
-                    </div>
-                    <div class="w-1/4">
-                        <input type="text" id="todoTitle" name="todoTitle" class="p-2 rounded" placeholder="Title"
-                            onkeyup="_validateInput('todoTitle')" />
-                    </div>
-                </div>
-                <div class="flex justify-center py-2">
-                    <div class="w-1/2">
-                        <label for="todoDesc" class="text">Description</label>
-                    </div>
-                    <div class="w-1/4">
-                        <input type="text" id="todoDesc" class="p-2 rounded" placeholder="Description"
-                            onkeyup="_validateInput('todoDesc')" />
-                    </div>
-                </div>
-                <div class="flex justify-center py-2">
-                    <div class="w-1/2">
-                        <label class="text" for="todoUrgent">Is Urgent</label>
-                    </div>
-                    <div class="w-1/4">
-                        <select name="todoUrgent" id="todoUrgent" class="p-2 rounded">
-                            <option value="0" selected>No</option>
-                            <option value="1">Yes</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="flex justify-center py-2">
-                    <button id="saveTodo" class="w-1/4 p-2 rounded bg-btn shadow">Save</button>
-                    <button id="loadTodo" class="w-1/4 p-2 rounded bg-btn shadow mx-2">Load</button>
-                    <button id="addTodo" class="w-1/4 p-2 rounded bg-btn shadow" onclick="addTask()">Add</button>
-                    <button id="clearTodo" class="w-1/4 p-2 rounded bg-btn shadow mx-2"
-                        onclick="clearTasks()">Clear</button>
-                    <input type="file" id="todoFile" class="hidden" onchange="loadFile(event)"
-                        accept="application/json" />
-
-                </div>
-                <div class="flex justify-center py-2">
-                    <span class="text">Hold shift for file mode!</span>
-                </div>
-            </div>
-            <div class="flex justify-center">
-                <ul id="todoList" class="w-1/2 p-2"></ul>
-            </div>
+  <header>
+    <nav id="menu" class="flex py-2"></nav>
+  </header>
+  <div class="content">
+    <div class="flex">
+      <div class="w-1/3"></div>
+      <div class="grid grid-cols-1 grid-rows-4 w-1/3">
+        <h1 class="text-center text-4xl py-4 text">Todo App</h1>
+        <div class="flex justify-center py-2">
+          <div class="w-1/2">
+            <label for="todoTitle" class="text">Title</label>
+          </div>
+          <div class="w-1/4">
+            <input type="text" id="todoTitle" name="todoTitle" class="p-2 rounded" placeholder="Title"
+              onkeyup="_validateInput('todoTitle')" />
+          </div>
         </div>
-        <div class="my-2">
-            <div id="tasks" class="grid grid-cols-4 grid-rows-4">
-            </div>
+        <div class="flex justify-center py-2">
+          <div class="w-1/2">
+            <label for="todoDesc" class="text">Description</label>
+          </div>
+          <div class="w-1/4">
+            <input type="text" id="todoDesc" class="p-2 rounded" placeholder="Description"
+              onkeyup="_validateInput('todoDesc')" />
+          </div>
         </div>
+        <div class="flex justify-center py-2">
+          <div class="w-1/2">
+            <label class="text" for="todoUrgent">Is Urgent</label>
+          </div>
+          <div class="w-1/4">
+            <select name="todoUrgent" id="todoUrgent" class="p-2 rounded">
+              <option value="0" selected>No</option>
+              <option value="1">Yes</option>
+            </select>
+          </div>
+        </div>
+        <div class="flex justify-center py-2">
+          <button id="saveTodo" class="w-1/4 p-2 rounded bg-btn shadow">Save</button>
+          <button id="loadTodo" class="w-1/4 p-2 rounded bg-btn shadow mx-2">Load</button>
+          <button id="addTodo" class="w-1/4 p-2 rounded bg-btn shadow" onclick="addTask()">Add</button>
+          <button id="clearTodo" class="w-1/4 p-2 rounded bg-btn shadow mx-2" onclick="clearTasks()">Clear</button>
+          <input type="file" id="todoFile" class="hidden" onchange="loadFile(event)" accept="application/json" />
+        </div>
+        <div class="flex justify-center py-2">
+          <span class="text">Hold shift for file mode!</span>
+        </div>
+      </div>
+      <div class="flex justify-center">
+        <ul id="todoList" class="w-1/2 p-2"></ul>
+      </div>
     </div>
-    <footer class="w-full text mx-auto flex justify-center py-2" id="footer"></footer>
-    <script>
-        template("menu", "/nav.html");
-        template("footer", "/footer.html");
-    </script>
-    <script src="todo.js"></script>
+    <div class="my-2">
+      <div id="tasks" class="grid grid-cols-4 grid-rows-4">
+      </div>
+    </div>
+  </div>
+  <footer class="w-full text mx-auto flex justify-center py-2" id="footer"></footer>
+  <script>
+    template("menu", "/nav.html");
+    template("footer", "/footer.html");
+  </script>
+  <script src="todo.js"></script>
 </body>
 
 </html>
