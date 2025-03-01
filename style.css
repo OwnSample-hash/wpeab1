@@ -1,5 +1,31 @@
+@font-face {
+  font-family: "Bedstead";
+  src: url("/bedstead.regular.otf");
+}
+
 .bg {
   background-color: #1c1c1c;
+}
+
+.bg-1 {
+  background-color: #3c3c3c;
+}
+
+.bg-btn {
+  background-color: #6c6c6c;
+  border-color: #6c6c6c;
+  color: #ddd;
+  font-size: 1.25em;
+  font-family: "Bedstead", sans-serif;
+}
+
+.bg-btn:hover {
+  background-color: #9c9c9c;
+  border-color: #9c9c9c;
+}
+
+.shadow {
+  box-shadow: 0 0 0.5em #000;
 }
 
 .bg-green {
@@ -10,14 +36,13 @@
   background-color: #ac0000;
 }
 
-@font-face {
-  font-family: "Bedstead";
-  src: url("/bedstead.regular.otf");
-}
-
 .text {
   color: #ccc;
   text-decoration: none;
+}
+
+.text-center {
+  text-align: center;
 }
 
 body {
@@ -35,6 +60,10 @@ a {
 
 .border-b-1 {
   border-bottom: 0.25em solid #3c3c3c;
+}
+
+.border-t-1 {
+  border-top: 0.25em solid #3c3c3c;
 }
 
 .rounded {
@@ -65,29 +94,90 @@ a {
   margin-right: 0.5em;
 }
 
-mb-auto {
+.my-2 {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+.mr-2 {
+  margin-right: 0.5em;
+}
+
+.mb-auto {
   margin-bottom: auto;
 }
 
-mx-auto {
+.mx-auto {
   margin-left: auto;
   margin-right: auto;
 }
 
-w-full {
+.w-full {
   width: 100%;
 }
 
-h-full {
-  height: 100%;
+.w-auto {
+  width: auto;
 }
 
-max-w-screen-xl {
-  max-width: 80rem;
+.w-1\/2 {
+  width: 50%;
+}
+
+.w-1\/3 {
+  width: 33.3333%;
+}
+
+.w-1\/4 {
+  width: 25%;
+}
+
+.w-2\/4 {
+  width: 50%;
+}
+
+.w-2\/3 {
+  width: 66.6666%;
+}
+
+.w-3\/4 {
+  width: 75%;
+}
+
+.p-2 {
+  padding: 0.5em;
+}
+
+.hidden {
+  display: none;
 }
 
 .flex {
   display: flex;
+}
+
+.grid {
+  display: grid;
+}
+
+.grid-cols-1 {
+  grid-template-columns: repeat(1, 1fr);
+}
+
+.grid-cols-4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.grid-col-span-2 {
+  grid-column: span 2;
+}
+
+.grid-rows-1 {
+  grid-template-rows: repeat(1, 1fr);
+}
+
+.grid-rows-4 {
+  grid-template-rows: repeat(4, 1fr);
 }
 
 .br-red {
