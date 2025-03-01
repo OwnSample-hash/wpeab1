@@ -12,14 +12,17 @@
 </head>
 
 <body class="bg" onload="onload()">
+
   <head>
     <nav id="menu" class="flex py-2"></nav>
   </head>
   <table id="tbl" class="border-1 rounded">
   </table>
   <div style="width: 800px;"><canvas id="chart"></canvas></div>
+  <footer class="w-full text mx-auto flex justify-center py-2" id="footer"></footer>
   <script>
     template("menu", "/nav.html");
+    template("footer", "/footer.html");
   </script>
 </body>
 
