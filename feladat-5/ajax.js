@@ -33,7 +33,7 @@ function heightStuff(heights) {
   $("height-sum").innerHTML = ((arr) =>
     arr.reduce((acc, curr) => acc + curr, 0))(heights);
   $("height-avg").innerHTML = ((arr) =>
-    arr.reduce((acc, curr) => acc + curr, 0) / arr.length)(heights);
+    arr.reduce((acc, curr) => acc + curr, 0) / arr.length)(heights).toFixed(2);
   $("height-max").innerHTML = Math.max(...heights);
 }
 
