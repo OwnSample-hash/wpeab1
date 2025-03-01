@@ -15,13 +15,23 @@
   background-color: #6c6c6c;
   border-color: #6c6c6c;
   color: #ddd;
-  font-size: 1.25em;
   font-family: "Bedstead", sans-serif;
 }
 
 .bg-btn:hover {
   background-color: #9c9c9c;
   border-color: #9c9c9c;
+}
+
+.btn-disabled {
+  background-color: #6c6c6c;
+  border-color: #6c6c6c;
+  color: #ddd;
+  font-family: "Bedstead", sans-serif;
+}
+
+.fs-6 {
+  font-size: 1.5em;
 }
 
 .shadow {
@@ -193,9 +203,20 @@ a {
 }
 
 footer {
-  position: fixed;
-  left: 0px;
-  bottom: 0px;
-  height: 30px;
-  width: 100%;
+  margin-top: auto;
+}
+
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+input::placeholder,
+select {
+  font-family: "Bedstead", sans-serif;
 }
