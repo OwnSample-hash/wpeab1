@@ -19,7 +19,8 @@ async function template(id, file) {
   await fetch(`${file}.js`)
     .then((response) => {
       if (!response.ok) {
-        throw new Error("File not found can be ignored");
+        console.error("File not found");
+        return;
       }
       return response.text();
     })
