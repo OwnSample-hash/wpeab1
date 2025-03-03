@@ -35,15 +35,15 @@
 }
 
 .shadow {
-  box-shadow: 0 0 0.5em #000;
+  box-shadow: 0 0 0.5em #1a1a1a;
 }
 
 .bg-green {
-  background-color: #00ac00;
+  background-color: #006c00;
 }
 
 .bg-red {
-  background-color: #ac0000;
+  background-color: #6c0000;
 }
 
 .text {
