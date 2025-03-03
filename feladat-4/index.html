@@ -16,10 +16,17 @@
   <head>
     <nav id="menu" class="flex py-2"></nav>
   </head>
-  <div class="content">
-    <table id="tbl" class="border-1 rounded">
-    </table>
-    <div style="width: 800px;"><canvas id="chart"></canvas></div>
+  <div class="content flex items-center">
+    <div class="w-1/4"></div>
+    <div class="w-1/2 ">
+      <div class="flex justify-center">
+        <table id="tbl" class="border-1 rounded justify-center">
+        </table>
+      </div>
+      <div>
+        <canvas id="chart"></canvas>
+      </div>
+    </div>
   </div>
   <footer class="w-full text mx-auto flex justify-center py-2" id="footer"></footer>
   <script>

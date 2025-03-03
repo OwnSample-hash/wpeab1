@@ -27,7 +27,7 @@ function onRowClick(row) {
       datasets: [{
         label: "Row " + (row + 1),
         data: nums[row],
-        borderColor: "blue",
+        borderColor: "#ccc",
         fill: false,
       }]
     },
