@@ -49,7 +49,6 @@ function onload() {
   for (let i = 1; i < 26; i++) {
     row.push(Math.random() * 100);
     if (i % 5 === 0) {
-      1
       nums.push(row);
       row = [];
     }
