@@ -54,5 +54,9 @@ function onload() {
       row = [];
     }
   }
-  $("tbl").innerHTML = nums.map((row, i) => `<tr class="tr" id="row-${i}">${row.map((num, j) => `<td id="cell-${i}-${j}" class="text" onclick="onRowClick(${i})">${num.toFixed(2)}</td>`).join("")}</tr>`).join("");
+  $("tbl").innerHTML = nums.map(
+    (row, i) => `<tr class="tr" id="row-${i}">${row.map(
+      (num, j) => `<td id="cell-${i}-${j}" class="text" onclick="onRowClick(${i})">${num.toFixed(2)}</td>`)
+      .join("")}</tr>`)
+    .join("");
 }
