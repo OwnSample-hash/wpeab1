@@ -1,0 +1,12 @@
+@import "tailwindcss";
+@import "flowbite/src/themes/default";
+@plugin "flowbite/plugin";
+@source "../node_modules/flowbite";
+
+:root {
+  @apply bg-gray-700 text-white;
+}
+
+.msg-box {
+  @apply rounded bg-gray-800 p-1.5 my-1;
+}
