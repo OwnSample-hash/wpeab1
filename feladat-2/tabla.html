@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tabla</title>
+  <link rel="stylesheet" href="/style.css">
+  <script src="/template.js"></script>
+
+</head>
+
+<body class="bg">
+  <nav id="menu" class="flex py-2"></nav>
+
+  <div class="content">
+    <div class="flex justify-center">
+      <div class="w-1/4"> </div>
+      <table class="text w-2/4 text-center" id="tbl">
+        <tr>
+          <th>Azonosító</th>
+          <th>Név</th>
+          <th>Kor</th>
+          <th>Magasság</th>
+        </tr>
+      </table>
+      <div class="w-1/4"> </div>
+    </div>
+
+    <div class="text">
+      <div class="flex justify-center my-2 fs-6 mt-6"><span>Szűrés</span></div>
+
+      <div class="flex justify-center my-2">
+        <label class="w-1/4" for="filter-nev">Név szűrés:</label>
+        <input class="p-2 rounded input-ph" type="text" id="filter-nev" oninput="filterTable()">
+      </div>
+
+      <div class="flex justify-center my-2">
+        <label class="w-1/4" for="filter-kor">Kor szűrés:</label>
+        <input class="p-2 rounded input-ph" type="text" id="filter-kor" oninput="filterTable()">
+      </div>
+
+      <div class="flex justify-center my-2">
+        <label class="w-1/4" for="filter-magassag">Magasság szűrés:</label>
+        <input class="p-2 rounded input-ph" type="text" id="filter-magassag" oninput="filterTable()">
+      </div>
+    </div>
+    <div class="text">
+      <div class="flex justify-center my-2 fs-6 mt-6"><span>Hozzáadás</span></div>
+
+      <div class="flex justify-center my-2">
+        <label class="w-1/4">
+          Név
+        </label>
+        <input class="p-2 rounded input-ph" id="nev" type="text" onkeyup="InputValidation('nev')">
+      </div>
+
+      <div class="flex justify-center my-2">
+        <label class="w-1/4">
+          Kor
+        </label>
+        <input class="p-2 rounded input-ph" id="kor" type="number" onkeyup="InputValidation('kor')">
+      </div>
+
+      <div class="flex justify-center my-2">
+        <label class="w-1/4">
+          Magasság
+        </label>
+        <input class="p-2 rounded input-ph" id="magassag" type="number" onkeyup="InputValidation('magassag')">
+      </div>
+
+      <div class="flex justify-center">
+        <button class="p-2 rounded bg-btn shadow " id="add" onclick="Add()">
+          Hozzáadás
+        </button>
+      </div>
+    </div>
+
+    <div class="text">
+      <div class="flex justify-center my-2 fs-6 mt-6"><span>Törlés</span></div>
+
+      <div class="flex justify-center my-2">
+        <label class="w-1/4">
+          Azonosító
+        </label>
+        <input class="p-2 rounded input-ph" id="tor" type="number" value="0">
+      </div>
+
+      <div class="flex justify-center">
+        <button class="p-2 rounded bg-btn shadow bg-red br-red" onclick="del()">
+          Törlés
+        </button>
+      </div>
+    </div>
+
+    <div class="text">
+      <div class="flex justify-center my-2 fs-6 mt-6"><span>Frissítés</span></div>
+
+      <div class="flex justify-center my-2">
+        <label class="w-1/4">
+          ID
+        </label>
+        <input class="p-2 rounded input-ph" id="IDD" type="number" onkeyup="InputValidation('IDD')">
+      </div>
+
+      <div class="flex justify-center my-2">
+        <label class="w-1/4">
+          Név
+        </label>
+        <input class="p-2 rounded input-ph" id="nevv" type="text" onkeyup="InputValidation('nevv')">
+      </div>
+
+      <div class=" flex justify-center my-2">
+        <label class="w-1/4">
+          Kor
+        </label>
+        <input class="p-2 rounded input-ph" id="korr" type="number" onkeyup="InputValidation('korr')">
+      </div>
+
+      <div class="flex justify-center my-2">
+        <label class="w-1/4">
+          Magasság
+        </label>
+        <input class="p-2 rounded input-ph" id="magassagg" type="number" onkeyup="InputValidation('magassagg')">
+      </div>
+
+      <div class="flex justify-center">
+        <button class="p-2 rounded bg-btn shadow " id="add" onclick="update()">
+          Frissítés
+        </button>
+      </div>
+
+    </div>
+  </div>
+  <footer class="w-full text mx-auto flex justify-center py-2" id="footer"></footer>
+
+
+  <script src="table.js"></script>
+  <script>
+    template("menu", "/nav.html");
+    template("footer", "/footer.html");
+  </script>
+
+</body>
+
+</html>
