@@ -1,5 +1,6 @@
 pathId = []
 pathId["/"] = "home";
+pathId["/feladat-3/tabla.html"]="tabla";
 pathId["/feladat-4/index.html"] = "chartjs";
 pathId["/feladat-5/ajax.html"] = "ajax";
 pathId["/feladat-6/index.html"] = "oojs";

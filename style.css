@@ -3,6 +3,7 @@
   src: url("/bedstead.regular.otf");
 }
 
+
 .bg {
   background-color: #1c1c1c;
 }
@@ -111,6 +112,10 @@ a {
 
 .mr-2 {
   margin-right: 0.5em;
+}
+
+.mt-6 {
+  margin-top: 1.5em;
 }
 
 .mb-auto {
