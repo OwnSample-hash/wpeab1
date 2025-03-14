@@ -11,8 +11,7 @@ function Chat() {
   const { sendMessage, lastMessage, readyState } = useWebSocket(socketUrl, {
     onOpen: console.log,
     onClose: console.log,
-    onMessage: console.log,
-    shouldReconnect: (closeEvent) => true,
+    shouldReconnect: (_) => true,
   });
 
   const handleClickChangeSocketUrl = useCallback(() => setSocketUrl(URL), []);
@@ -71,7 +70,7 @@ function Chat() {
         <div className="flex flex-col w-11/12 md:w-1/2 bg-gray-700 p-2 overflow-y-auto h-[75vh]">
           {messageHistory.map((data, idx) => (
             <div className="flex my-2" key={idx}>
-              <MsgRender raw={data} key={idx} />
+              <MsgRender raw={data} />
             </div>
           ))}
         </div>
