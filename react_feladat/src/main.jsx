@@ -8,6 +8,7 @@ import Calc from "./calc/calc";
 createRoot(document.getElementById("root")).render(
   <BrowserRouter>
     <Routes>
+      <Route path="/" element={window.location.replace("/")} />
       <Route path="/react/" element={<Nav />} />
       <Route path="/react/chat" element={<Chat />} />
       <Route path="/react/calc" element={<Calc />} />
