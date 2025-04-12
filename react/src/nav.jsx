@@ -10,6 +10,9 @@ function Nav() {
         <Link to="/chat" className="p-4">
           Chat
         </Link>
+        <Link to="/calc" className="p-4">
+          Calc
+        </Link>
       </div>
     </nav>
   );
