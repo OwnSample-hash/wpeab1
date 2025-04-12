@@ -225,3 +225,27 @@ input::placeholder,
 select {
   font-family: "Bedstead", sans-serif;
 }
+
+#dropZone {
+  width: 200px;
+  height: 100px;
+  border: 2px dashed #000;
+  text-align: center;
+  line-height: 100px;
+  margin-top: 10px;
+}
+
+canvas {
+  border: 1px solid white;
+  margin-top: 10px;
+}
+
+svg {
+  border: 1px solid white;
+  margin-top: 10px;
+}
+
+#time {
+  font-size: 3em;
+  color: white;
+}

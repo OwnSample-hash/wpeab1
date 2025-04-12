@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>1.Feladat</title>
+  <link rel="stylesheet" href="/style.css">
+  <script src="/template.js"></script>
+</head>
+
+<body class="bg">
+  <nav id="menu" class="flex py-2"></nav>
+  <header class="flex justify-center">
+    <h1 class="text">Web-programozás-1 Előadás Házi feladat</h1>
+  </header>
+
+  <div class="content">
+    <div class="flex justify-center my-2 text">Storage</div>
+    <div class="flex justify-center my-2">
+      <input class="p-2 rounded input-ph" type="text" id="userString" placeholder="Enter a string">
+    </div>
+    <div class="flex justify-center my-2">
+      <button class="p-2 rounded bg-btn shadow " onclick="storeUserString()">Store String</button>
+    </div>
+    <div class="flex justify-center my-2 text">
+      <p id="storedData"></p>
+    </div>
+
+    <div class="flex justify-center my-2 text">Geolocation</div>
+    <div class="flex justify-center my-2 text">
+      <button class="p-2 rounded bg-btn shadow " onclick="getLocation()">Get Location</button>
+    </div>
+    <div class="flex justify-center my-2 text">
+      <p id="locationData"></p>
+    </div>
+
+    <div class="flex justify-center my-2 text">Drag & Drop</div>
+    <div class="flex justify-center my-2 text">
+      <div id="dropZone">Drop Here</div>
+    </div>
+    <div class="flex justify-center my-2 text">
+      <p id="dropText" draggable="true">Drag me</p>
+    </div>
+
+    <div class="flex justify-center my-2 text">Canvas rajzolás</div>
+    <div class="flex justify-center my-2">
+      <canvas id="myCanvas" width="400" height="200"></canvas>
+    </div>
+    <div class="flex justify-center my-2">
+      <button class="p-2 rounded bg-btn shadow " onclick="clearCanvas()">Clear Canvas</button>
+    </div>
+
+
+    <div class="flex justify-center my-2 text">SVG mosolygós fej</div>
+    <div class="flex justify-center my-2">
+      <svg width="100" height="100" viewBox="0 0 100 100">
+        <circle cx="50" cy="50" r="40" stroke="black" stroke-width="3" fill="yellow" />
+        <circle cx="35" cy="40" r="5" fill="black" />
+        <circle cx="65" cy="40" r="5" fill="black" />
+        <path d="M35,65 Q50,80 65,65" stroke="black" stroke-width="3" fill="transparent" />
+      </svg>
+    </div>
+
+    <div class="flex justify-center my-2 text">Server-Sent Events</div>
+    <div class="flex justify-center my-2 text">
+      Jelenlegi idő
+    </div>
+    
+     <div class="flex justify-center my-2 text" id="time">Loading...</div>
+    
+      
+
+  
+
+  </div>
+  <footer class="w-full text mx-auto flex justify-center py-2" id="footer"></footer>
+  <script src="html5.js"></script>
+  <script>
+    template("menu", "/nav.html");
+    template("footer", "/footer.html");
+  </script>
+</body>
+
+</html>
