@@ -70,7 +70,7 @@ function clearCanvas() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 }
 
-const source = new EventSource("/feladat-3/stream.php");
+const source = new EventSource("/stream.php");
 
 source.onmessage = function (event) {
   const data = JSON.parse(event.data);
