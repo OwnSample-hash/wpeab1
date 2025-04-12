@@ -11,7 +11,7 @@ function sendMessage($data) {
 }
 
 while (true) {
-    $time = date('H:i:s');
+    $time = DateTime('now', new DateTimeZone('Europe/Budapest'))->format('Y-m-d H:i:s');
     sendMessage(["time" => $time]);
 
     sleep(1);
