@@ -4,13 +4,13 @@ function Nav() {
   return (
     <nav className="bg-gray-800 text-white p-4 mb-4">
       <div>
-        <Link to="/" className="p-4">
+        <Link to="/react/" className="p-4">
           Home
         </Link>
-        <Link to="/chat" className="p-4">
+        <Link to="/react/chat" className="p-4">
           Chat
         </Link>
-        <Link to="/calc" className="p-4">
+        <Link to="/react/calc" className="p-4">
           Calc
         </Link>
       </div>

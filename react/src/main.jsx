@@ -9,8 +9,9 @@ createRoot(document.getElementById("root")).render(
   <BrowserRouter>
     <Routes>
       <Route path="/" element={<Nav />} />
-      <Route path="/chat" element={<Chat />} />
-      <Route path="/calc" element={<Calc />} />
+      <Route path="/react/" element={<Nav />} />
+      <Route path="/react/chat" element={<Chat />} />
+      <Route path="/react/calc" element={<Calc />} />
     </Routes>
   </BrowserRouter>
 );
