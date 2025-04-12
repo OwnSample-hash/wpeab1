@@ -1,5 +1,5 @@
 function $(id) {
-  return (id === "" ? null : document.getElementById(id));
+  return id === "" ? null : document.getElementById(id);
 }
 
 async function template(id, file) {
@@ -10,26 +10,26 @@ async function template(id, file) {
       }
       return response.text();
     })
-    .then(data => {
+    .then((data) => {
       $(id).innerHTML = data;
     })
-    .catch(error => {
+    .catch((error) => {
       console.error(error);
     });
   await fetch(`${file}.js`)
     .then((response) => {
       if (!response.ok) {
-        console.error("File not found");
+        console.error(`File not found ${file}.js`);
         return;
       }
       return response.text();
     })
-    .then(data => {
+    .then((data) => {
       node = document.createElement("script");
       node.innerHTML = data;
       $(id).appendChild(node);
     })
-    .catch(error => {
+    .catch((error) => {
       console.error(error);
     });
 }
