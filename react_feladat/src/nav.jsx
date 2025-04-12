@@ -7,6 +7,9 @@ function Nav() {
         <Link to="/react/" className="p-4">
           Home
         </Link>
+        <Link to="/" className="p-4">
+          Back
+        </Link>
         <Link to="/react/chat" className="p-4">
           Chat
         </Link>
