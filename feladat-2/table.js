@@ -49,12 +49,15 @@ function Add() {
 
 function addtotable() {
   $("tbl").innerHTML = `
+    <thead>
     <tr>
-      <th onclick="sortTable('id')">Azonosító</th>
+      <th onclick="sortTable('id')">Index</th>
       <th onclick="sortTable('nev')">Név</th>
       <th onclick="sortTable('kor')">Kor</th>
       <th onclick="sortTable('magassag')">Magasság</th>
-    </tr>`;
+    </tr>
+    </thead>
+    <tbody>`;
   $("tbl").innerHTML += adatok
     .map((element, i) => {
       return `<tr>
@@ -65,6 +68,7 @@ function addtotable() {
             </tr>`;
     })
     .join("");
+    $("tbl").innerHTML+='</tbody>';
 }
 
 function del() {
@@ -123,12 +127,15 @@ function filterTable() {
   );
   
   $("tbl").innerHTML = `
+    <thead>
     <tr>
-      <th onclick="sortTable('id')">Azonosító</th>
+      <th onclick="sortTable('id')">Index</th>
       <th onclick="sortTable('nev')">Név</th>
       <th onclick="sortTable('kor')">Kor</th>
       <th onclick="sortTable('magassag')">Magasság</th>
-    </tr>`;
+    </tr>
+    </thead
+    <tbody>`;
   $("tbl").innerHTML += filteredData
     .map((element, i) => {
       return `<tr>
@@ -139,4 +146,5 @@ function filterTable() {
             </tr>`;
     })
     .join("");
+    $("tbl").innerHTML+='</tbody>';
 }
