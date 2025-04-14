@@ -1,5 +1,5 @@
 // const url = "http://gamf.nhely.hu/ajax2/";
-const url = "/proxy";
+const url = "/proxy/";
 
 function $(id) {
   return id === "" ? null : document.getElementById(id);
