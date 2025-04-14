@@ -3,7 +3,6 @@
   src: url("/bedstead.regular.otf");
 }
 
-
 .bg {
   background-color: #1c1c1c;
 }
@@ -58,6 +57,22 @@
 
 body {
   font-family: "Bedstead", sans-serif;
+  display: flex;
+  flex-direction: column;
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  margin: 0;
+}
+
+html {
+  height: 100%;
+  margin: 0;
+}
+
+.content {
+  flex: 1;
+  padding: 1rem;
 }
 
 a {
@@ -209,12 +224,6 @@ a {
 
 footer {
   margin-top: auto;
-}
-
-body {
-  display: flex;
-  min-height: 100vh;
-  flex-direction: column;
 }
 
 .flex-col {
