@@ -1,7 +1,8 @@
-const url = "http://gamf.nhely.hu/ajax2/";
+// const url = "http://gamf.nhely.hu/ajax2/";
+const url = "/proxy";
 
 function $(id) {
-  return (id === "" ? null : document.getElementById(id));
+  return id === "" ? null : document.getElementById(id);
 }
 
 ids = [];
@@ -17,8 +18,8 @@ function setStatus(text, isError = false) {
 
 function _validateInput(fieldId) {
   if (
-    ($(fieldId).value.length <= 0 ||
-      $(fieldId).value.length > 30) ||
+    $(fieldId).value.length <= 0 ||
+    $(fieldId).value.length > 30 ||
     $(fieldId).value === ""
   ) {
     $(fieldId).classList.add("br-red");
@@ -68,9 +69,7 @@ async function read() {
       </tr>`;
       ids = [];
       heightStuff(data.list.map((row) => Number(row.height)));
-      sort = data.list.sort((a, b) =>
-        a.id - b.id
-      );
+      sort = data.list.sort((a, b) => a.id - b.id);
       for (const row of data.list) {
         $("tbl").innerHTML += `<tr id="row-${row.id}">
           <td class="text py-2 px-2">${row.id}</td>
@@ -95,14 +94,15 @@ async function _del(id) {
     },
     cache: "no-cache",
     body: "op=delete&code=" + $("code").value + "&id=" + id,
-  }).then((data) => {
-    if (!data.ok) {
-      console.log("error");
-      setStatus("Error", true);
-      return;
-    }
-    read();
   })
+    .then((data) => {
+      if (!data.ok) {
+        console.log("error");
+        setStatus("Error", true);
+        return;
+      }
+      read();
+    })
     .catch((error) => {
       console.log(error);
       setStatus("Error", true);
@@ -117,18 +117,26 @@ async function _edit(id) {
       "Content-Type": "application/x-www-form-urlencoded",
     },
     cache: "no-cache",
-    body: "op=update&code=" + $("code").value + "&height=" +
+    body:
+      "op=update&code=" +
+      $("code").value +
+      "&height=" +
       $("height-" + id).value +
-      "&weight=" + $("weight-" + id).value + "&name=" + $("name-" + id).value +
-      "&id=" + id,
-  }).then((data) => {
-    if (!data.ok) {
-      console.log("error");
-      setStatus("Error", true);
-      return;
-    }
-    return data.text();
+      "&weight=" +
+      $("weight-" + id).value +
+      "&name=" +
+      $("name-" + id).value +
+      "&id=" +
+      id,
   })
+    .then((data) => {
+      if (!data.ok) {
+        console.log("error");
+        setStatus("Error", true);
+        return;
+      }
+      return data.text();
+    })
     .then((data) => {
       if (Number(data) === 0) {
         console.log("error");
@@ -136,7 +144,8 @@ async function _edit(id) {
         return;
       }
       read();
-    }).catch((error) => {
+    })
+    .catch((error) => {
       setStatus("Error", true);
       console.log(error);
     });
@@ -150,16 +159,24 @@ async function _add() {
       "Content-Type": "application/x-www-form-urlencoded",
     },
     cache: "no-cache",
-    body: "op=create&code=" + $("code").value + "&height=" + $("height").value +
-      "&weight=" + $("weight").value + "&name=" + $("name").value,
-  }).then((data) => {
-    if (!data.ok) {
-      console.log("error");
-      setStatus("Error", true);
-      return;
-    }
-    return data.text();
+    body:
+      "op=create&code=" +
+      $("code").value +
+      "&height=" +
+      $("height").value +
+      "&weight=" +
+      $("weight").value +
+      "&name=" +
+      $("name").value,
   })
+    .then((data) => {
+      if (!data.ok) {
+        console.log("error");
+        setStatus("Error", true);
+        return;
+      }
+      return data.text();
+    })
     .then((data) => {
       if (Number(data) === 0) {
         console.log("error");
@@ -167,7 +184,8 @@ async function _add() {
         return;
       }
       read();
-    }).catch((error) => {
+    })
+    .catch((error) => {
       setStatus("Error", true);
       console.log(error);
     });
