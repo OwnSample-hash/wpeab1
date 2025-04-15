@@ -65,7 +65,7 @@ export default function Calc() {
       return "0";
     } else if (curVal === ".") {
       return "0.";
-    } else if (curVal.length >= 18) {
+    } else if (curVal.length >= 22) {
       return "error";
     } else {
       return curVal;
