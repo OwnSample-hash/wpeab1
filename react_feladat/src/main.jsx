@@ -14,7 +14,9 @@ createRoot(document.getElementById("root")).render(
         element={
           <div>
             <Nav />
-            <h1>Web-programozás-1 Előadás Házi feladat</h1>
+            <div className="flex justify-center text-4xl font-bold">
+              <span>Web-programozás-1 Előadás Házi feladat</span>
+            </div>
           </div>
         }
       />
