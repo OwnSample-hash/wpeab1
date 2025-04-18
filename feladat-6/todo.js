@@ -26,21 +26,21 @@ class Task {
     div.classList.add("bg-1", "rounded", "p-2", "my-2", "mx-2");
     div.id = `task-${this.i}`;
     div.innerHTML = `
-        <h3>Task: ${this.title}</h3>
-        <h4>Desc:</h4>
+        <h3>Feladat: ${this.title}</h3>
+        <h4>Leírás:</h4>
         <p>${this.desc}</p>
-        <p>Is urgent: ${this.isUrgent ? "Yes" : "No"}</p>
+        <p>Sürgős-e: ${this.isUrgent ? "Igen" : "Nem"}</p>
         `;
     let button = document.createElement("button");
     button.classList.add("rounded");
     if (this.isNotDone) {
-      button.innerHTML = "Mark done!";
+      button.innerHTML = "Késznek jelölés!";
       button.onclick = () => {
         this.markDone();
       };
       button.classList.add("bg-btn");
     } else {
-      button.innerHTML = "Done!";
+      button.innerHTML = "Kész!";
       button.disabled = true;
       button.classList.add("btn-disabled");
     }
@@ -116,11 +116,11 @@ function save() {
 
 function load() {
   if (tasks.length > 0) {
-    alert("Tasks already loaded!\nPlease clear tasks first or hold shift for loading a json file!");
+    alert("A feladatok már betöltődtek!\n Kérlek, először töröld a feladatokat, vagy a Shift billentyűt nyomva tartva tölts be egy JSON fájlt!");
     return;
   }
   if (!localStorage.getItem("tasks")) {
-    alert("No tasks saved!");
+    alert("Nincs mentett feladat!");
     return;
   }
   tasks = JSON.parse(localStorage.getItem("tasks"));
@@ -137,7 +137,7 @@ function load() {
 function clearTasks() {
   localStorage.removeItem("tasks");
   $("tasks").innerHTML = "";
-  alert("Tasks cleared!");
+  alert("A feladatok sikeresen törölve lettek");
   window.location.reload();
 }
 

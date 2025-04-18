@@ -27,7 +27,7 @@ function onRowClick(row) {
       labels: nums[row].map((_, i) => i + 1),
       datasets: [
         {
-          label: "Row " + (row + 1),
+          label: "Sor " + (row + 1),
           data: nums[row],
           borderColor: "#ccc",
           fill: false,
