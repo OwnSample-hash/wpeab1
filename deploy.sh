@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -xe
+
 if [[ $EUID -ne 33 ]]; then
     echo "Please run this script as httpd user."
     exit 1
