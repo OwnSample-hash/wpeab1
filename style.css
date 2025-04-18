@@ -215,6 +215,7 @@ a {
 }
 
 .tr:hover {
+  cursor: pointer;
   background-color: #6c6c6c;
 }
 

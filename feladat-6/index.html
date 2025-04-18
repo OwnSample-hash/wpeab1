@@ -17,45 +17,45 @@
     <div class="flex">
       <div class="w-1/3"></div>
       <div class="grid grid-cols-1 grid-rows-4 w-1/3">
-        <h1 class="text-center text-4xl py-4 text">Todo App</h1>
+        <h1 class="text-center text-4xl py-4 text">Feladatkezelő alkalmazás</h1>
         <div class="flex justify-center py-2">
           <div class="w-1/2">
-            <label for="todoTitle" class="text fs-6">Title</label>
+            <label for="todoTitle" class="text fs-6">Feladat</label>
           </div>
           <div class="w-1/4">
-            <input type="text" id="todoTitle" name="todoTitle" class="p-2 rounded input-ph" placeholder="Title"
+            <input type="text" id="todoTitle" name="todoTitle" class="p-2 rounded input-ph" placeholder="Feladat"
               onkeyup="_validateInput('todoTitle')" />
           </div>
         </div>
         <div class="flex justify-center py-2">
           <div class="w-1/2">
-            <label for="todoDesc" class="text fs-6">Description</label>
+            <label for="todoDesc" class="text fs-6">Leírás</label>
           </div>
           <div class="w-1/4">
-            <input type="text" id="todoDesc" class="p-2 rounded input-ph" placeholder="Description"
+            <input type="text" id="todoDesc" class="p-2 rounded input-ph" placeholder="Leírás"
               onkeyup="_validateInput('todoDesc')" />
           </div>
         </div>
         <div class="flex justify-center py-2">
           <div class="w-1/2">
-            <label class="text fs-6" for="todoUrgent">Is Urgent</label>
+            <label class="text fs-6" for="todoUrgent">Sürgős-e</label>
           </div>
           <div class="w-1/4">
             <select name="todoUrgent" id="todoUrgent" class="p-2 rounded input-ph">
-              <option value="0" selected>No</option>
-              <option value="1">Yes</option>
+              <option value="0" selected>Nem</option>
+              <option value="1">Igen</option>
             </select>
           </div>
         </div>
         <div class="flex justify-center py-2">
-          <button id="saveTodo" class="w-1/4 p-2 rounded bg-btn shadow fs-6">Save</button>
-          <button id="loadTodo" class="w-1/4 p-2 rounded bg-btn shadow fs-6 mx-2">Load</button>
-          <button id="addTodo" class="w-1/4 p-2 rounded bg-btn shadow fs-6" onclick="addTask()">Add</button>
-          <button id="clearTodo" class="w-1/4 p-2 rounded bg-btn shadow fs-6 mx-2" onclick="clearTasks()">Clear</button>
+          <button id="saveTodo" class="w-1/4 p-2 rounded bg-btn shadow fs-6">Mentés</button>
+          <button id="loadTodo" class="w-1/4 p-2 rounded bg-btn shadow fs-6 mx-2">Betöltés</button>
+          <button id="addTodo" class="w-1/4 p-2 rounded bg-btn shadow fs-6" onclick="addTask()">Hozzáadás</button>
+          <button id="clearTodo" class="w-1/4 p-2 rounded bg-btn shadow fs-6 mx-2" onclick="clearTasks()">Törlés</button>
           <input type="file" id="todoFile" class="hidden" onchange="loadFile(event)" accept="application/json" />
         </div>
         <div class="flex justify-center py-2">
-          <span class="text">Hold shift for file mode!</span>
+          <span class="text">A fájl módhoz tartsd lenyomva a Shift billentyűt!</span>
         </div>
       </div>
       <div class="flex justify-center">

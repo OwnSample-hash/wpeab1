@@ -39,12 +39,12 @@ function getLocation() {
 let dropZone = document.getElementById("dropZone");
 let dragText = document.getElementById("dropText");
 dragText.ondragstart = (event) =>
-  event.dataTransfer.setData("text", event.target.id);
+  event.dataTransfer.setData("text", "ezt");
 dropZone.ondragover = (event) => event.preventDefault();
 dropZone.ondrop = (event) => {
   event.preventDefault();
   let data = event.dataTransfer.getData("text");
-  dropZone.innerText = "Dropped: " + data;
+  dropZone.innerText = "Dobtad " + data;
 };
 
 let canvas = document.getElementById("myCanvas");
