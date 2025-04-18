@@ -60,7 +60,8 @@ async function read() {
     .then((data) => {
       data = JSON.parse(data);
       removeInsertRow();
-      $("tbl").innerHTML = `<thead><tr>
+      $("tbl").innerHTML = `<thead>
+      <tr>
         <th class="text py-2 px-2">Id</th>
         <th class="text py-2 px-2">Név</th>
         <th class="text py-2 px-2">Magasság</th>
@@ -69,7 +70,7 @@ async function read() {
         <th class="text py-2 px-2">Törlés</th>
       </tr>
       </thead>
-      <tbody>`;
+      <tbody id="tbl-body">`;
       ids = [];
       heightStuff(data.list.map((row) => Number(row.height)));
       sort = data.list.sort((a, b) => a.id - b.id);
@@ -218,7 +219,7 @@ async function _add() {
 }
 
 function appendInsertRow() {
-  $("tbl").innerHTML += `<tr id="insertRow">
+  $("tbl-body").innerHTML += `<tr id="insertRow">
       <td class="text py-2 px-2">Id</td>
       <td class="text py-2 px-2"><input onKeyUp="_validateInput('name')" class="rounded" id="name" placeholder="Fgh"/></td>
       <td class="text py-2 px-2"><input onKeyUp="_validateInput('height')" class="rounded" id="height" placeholder="12"/></td>
