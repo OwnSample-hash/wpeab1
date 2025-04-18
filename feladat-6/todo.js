@@ -1,5 +1,5 @@
 function $(id) {
-  return (id === "" ? null : document.getElementById(id));
+  return id === "" ? null : document.getElementById(id);
 }
 
 let tasks = [];
@@ -83,8 +83,8 @@ function newTask(title, desc, isUrgent, isNotDone, i) {
 function _validateInput(fieldId) {
   const field = $(fieldId);
   if (
-    (field.value.length <= 0 ||
-      field.value.length > 30) ||
+    field.value.length <= 0 ||
+    field.value.length > 30 ||
     field.value === ""
   ) {
     field.classList.add("br-red");
@@ -100,23 +100,38 @@ function addTask() {
   if (!_validateInput("todoTitle") || !_validateInput("todoDesc")) {
     return;
   }
-  let task = newTask($("todoTitle").value, $("todoDesc").value, $("todoUrgent").value === "1" ? true : false, true, tasks.length);
+  let task = newTask(
+    $("todoTitle").value,
+    $("todoDesc").value,
+    $("todoUrgent").value === "1" ? true : false,
+    true,
+    tasks.length
+  );
   tasks.push(task);
   task.render("tasks");
 }
 
 function save() {
-  localStorage.setItem("tasks", JSON.stringify(tasks, (k, v) => {
-    if (k === "classes" || k === "i") {
-      return undefined;
-    }
-    return v;
-  }, 0));
+  localStorage.setItem(
+    "tasks",
+    JSON.stringify(
+      tasks,
+      (k, v) => {
+        if (k === "classes" || k === "i") {
+          return undefined;
+        }
+        return v;
+      },
+      0
+    )
+  );
 }
 
 function load() {
   if (tasks.length > 0) {
-    alert("A feladatok már betöltődtek!\n Kérlek, először töröld a feladatokat, vagy a Shift billentyűt nyomva tartva tölts be egy JSON fájlt!");
+    alert(
+      "A feladatok már betöltődtek!\n Kérlek, először töröld a feladatokat, vagy a Shift billentyűt nyomva tartva tölts be egy JSON fájlt!"
+    );
     return;
   }
   if (!localStorage.getItem("tasks")) {
@@ -126,7 +141,9 @@ function load() {
   tasks = JSON.parse(localStorage.getItem("tasks"));
   let newTasks = [];
   tasks.forEach((task, i) => {
-    newTasks.push(newTask(task.title, task.desc, task.isUrgent, task.isNotDone, i));
+    newTasks.push(
+      newTask(task.title, task.desc, task.isUrgent, task.isNotDone, i)
+    );
   });
   tasks = newTasks;
   tasks.forEach((task) => {
@@ -142,14 +159,18 @@ function clearTasks() {
 }
 
 function saveFile() {
-  let data = JSON.stringify(tasks, (k, v) => {
-    if (k === "classes" || k === "i") {
-      return undefined;
-    }
-    return v;
-  }, 2);
+  let data = JSON.stringify(
+    tasks,
+    (k, v) => {
+      if (k === "classes" || k === "i") {
+        return undefined;
+      }
+      return v;
+    },
+    2
+  );
   let blob = new Blob([data], { type: "application/json" });
-  let link = document.createElement('a');
+  let link = document.createElement("a");
 
   link.href = URL.createObjectURL(blob);
   link.download = "todo.json";
@@ -164,7 +185,15 @@ function loadFile(file) {
     let data = JSON.parse(reader.result);
     let newTasks = [];
     data.forEach((task) => {
-      newTasks.push(newTask(task.title, task.desc, task.isUrgent));
+      newTasks.push(
+        newTask(
+          task.title,
+          task.desc,
+          task.isUrgent,
+          task.isNotDone,
+          tasks.length
+        )
+      );
     });
     tasks = newTasks;
     tasks.forEach((task) => {
