@@ -60,14 +60,16 @@ async function read() {
     .then((data) => {
       data = JSON.parse(data);
       removeInsertRow();
-      $("tbl").innerHTML = `<tr>
+      $("tbl").innerHTML = `<thead><tr>
         <th class="text py-2 px-2">Id</th>
         <th class="text py-2 px-2">Név</th>
         <th class="text py-2 px-2">Magasság</th>
         <th class="text py-2 px-2">Súly</th>
         <th class="text py-2 px-2">Frissítés</th>
         <th class="text py-2 px-2">Törlés</th>
-      </tr>`;
+      </tr>
+      </thead>
+      <tbody>`;
       ids = [];
       heightStuff(data.list.map((row) => Number(row.height)));
       sort = data.list.sort((a, b) => a.id - b.id);
@@ -82,6 +84,7 @@ async function read() {
         </tr>`;
         ids.push(row.id);
       }
+      $("tbl").innerHTML += `</tbody>`;
       appendInsertRow();
     });
 }
