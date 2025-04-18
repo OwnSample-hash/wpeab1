@@ -10,8 +10,8 @@
 </head>
 
 <body class="bg">
+  <nav id="menu" class="py-2"></nav>
   <header>
-    <nav id="menu" class="flex py-2"></nav>
   </header>
   <div class="content">
     <div class="flex">
@@ -51,7 +51,8 @@
           <button id="saveTodo" class="w-1/4 p-2 rounded bg-btn shadow fs-6">Mentés</button>
           <button id="loadTodo" class="w-1/4 p-2 rounded bg-btn shadow fs-6 mx-2">Betöltés</button>
           <button id="addTodo" class="w-1/4 p-2 rounded bg-btn shadow fs-6" onclick="addTask()">Hozzáadás</button>
-          <button id="clearTodo" class="w-1/4 p-2 rounded bg-btn shadow fs-6 mx-2" onclick="clearTasks()">Törlés</button>
+          <button id="clearTodo" class="w-1/4 p-2 rounded bg-btn shadow fs-6 mx-2"
+            onclick="clearTasks()">Törlés</button>
           <input type="file" id="todoFile" class="hidden" onchange="loadFile(event)" accept="application/json" />
         </div>
         <div class="flex justify-center py-2">
