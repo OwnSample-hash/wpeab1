@@ -191,8 +191,8 @@ async function _edit(id) {
   setStatus("Szerkesztés...");
   if (
     !(
-      _validateInput("name-" + id) ||
-      _validateInput("height-" + id) ||
+      _validateInput("name-" + id) &&
+      _validateInput("height-" + id) &&
       _validateInput("weight-" + id)
     )
   ) {
@@ -244,8 +244,8 @@ async function _add() {
   setStatus("Hozzáadás...");
   if (
     !(
-      _validateInput("name") ||
-      _validateInput("height") ||
+      _validateInput("name") &&
+      _validateInput("height") &&
       _validateInput("weight")
     )
   ) {
