@@ -66,7 +66,7 @@ export default function Calc() {
     } else if (curVal === ".") {
       return "0.";
     } else if (curVal.length >= 22) {
-      return "error";
+      return "Hiba sok számjegy";
     } else {
       return curVal;
     }

@@ -31,11 +31,11 @@ function Chat() {
   }, [lastMessage]);
 
   const connectionStatus = {
-    [ReadyState.CONNECTING]: "Connecting",
-    [ReadyState.OPEN]: "Open",
-    [ReadyState.CLOSING]: "Closing",
-    [ReadyState.CLOSED]: "Closed",
-    [ReadyState.UNINSTANTIATED]: "Uninstantiated",
+    [ReadyState.CONNECTING]: "Csatlakozás",
+    [ReadyState.OPEN]: "Kapcsolódva",
+    [ReadyState.CLOSING]: "Zárás",
+    [ReadyState.CLOSED]: "Zárva",
+    [ReadyState.UNINSTANTIATED]: "Nincs kapcsolat",
   }[readyState];
 
   function send() {
@@ -66,7 +66,7 @@ function Chat() {
     <div>
       <Nav />
       <div className="flex flex-col items-center justify-center ">
-        <span>The WebSocket is currently {connectionStatus}</span>
+        <span>A WebSocket állapota: {connectionStatus}</span>
         <div className="flex flex-col w-11/12 md:w-1/2 bg-gray-700 p-2 overflow-y-auto h-[75vh]">
           {messageHistory.map((data, idx) => (
             <div className="flex my-2" key={idx}>
