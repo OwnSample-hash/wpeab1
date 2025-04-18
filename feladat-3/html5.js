@@ -31,7 +31,7 @@ function getLocation() {
     navigator.geolocation.getCurrentPosition((position) => {
       document.getElementById(
         "locationData"
-      ).innerText = `Lat: ${position.coords.latitude}, Lon: ${position.coords.longitude}`;
+      ).innerText = `Szélesség: ${position.coords.latitude}, Hosszúság: ${position.coords.longitude}`;
     });
   }
 }
