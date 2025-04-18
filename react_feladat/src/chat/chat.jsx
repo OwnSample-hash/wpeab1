@@ -4,8 +4,8 @@ import useWebSocket, { ReadyState } from "react-use-websocket";
 import MsgRender from "./MessageRenderer";
 
 function Chat() {
-  const [URL, SetURL] = useState("ws://127.0.0.1:8080/echo");
-  const [socketUrl, setSocketUrl] = useState("ws://127.0.0.1:8080/echo");
+  const [URL, SetURL] = useState("wss://echo.websocket.org/");
+  const [socketUrl, setSocketUrl] = useState("wss://echo.websocket.org/");
   const [messageHistory, setMessageHistory] = useState([]);
   const [message, setMessage] = useState("");
   const { sendMessage, lastMessage, readyState } = useWebSocket(socketUrl, {
@@ -91,7 +91,7 @@ function Chat() {
             disabled={readyState !== ReadyState.OPEN}
             onClick={() => send()}
           >
-            Send
+            Küldés
           </button>
         </div>
         <div>
@@ -109,7 +109,7 @@ function Chat() {
             className="bg-gray-900 rounded p-0.5 hover:bg-gray-500"
             onClick={handleClickChangeSocketUrl}
           >
-            Change Socket URL
+            Csatlakozás
           </button>
         </div>
       </div>

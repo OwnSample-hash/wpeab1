@@ -5,16 +5,16 @@ function Nav() {
     <nav className="bg-gray-800 text-white p-4 mb-4">
       <div>
         <Link to="/react/" className="p-4">
-          Home
+          Főoldal
         </Link>
         <Link to="/" className="p-4">
-          Back
+          Vissza
         </Link>
         <Link to="/react/chat" className="p-4">
-          Chat
+          Beszélgetés
         </Link>
         <Link to="/react/calc" className="p-4">
-          Calc
+          Számológép
         </Link>
       </div>
     </nav>
