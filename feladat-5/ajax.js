@@ -159,7 +159,6 @@ async function read() {
         $("tbl-body").appendChild(element);
         ids.push(row.id);
       }
-      $("tbl").innerHTML += `</tbody>`;
       appendInsertRow();
     });
 }
