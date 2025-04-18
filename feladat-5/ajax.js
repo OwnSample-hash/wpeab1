@@ -1,5 +1,5 @@
 // const url = "http://gamf.nhely.hu/ajax2/";
-const url = "/proxy/";
+const url = "/proxy/"; // https ről nem kérhetek http tartalmat nginx reverse proxyval oldom meg
 
 function $(id) {
   return id === "" ? null : document.getElementById(id);
@@ -39,7 +39,7 @@ function heightStuff(heights) {
 }
 
 async function read() {
-  setStatus("Reading...");
+  setStatus("Olvasás...");
   await fetch(url, {
     method: "POST",
     headers: {
@@ -61,11 +61,11 @@ async function read() {
       removeInsertRow();
       $("tbl").innerHTML = `<tr>
         <th class="text py-2 px-2">Id</th>
-        <th class="text py-2 px-2">Name</th>
-        <th class="text py-2 px-2">Height</th>
-        <th class="text py-2 px-2">Weight</th>
-        <th class="text py-2 px-2">Update</th>
-        <th class="text py-2 px-2">Delete</th>
+        <th class="text py-2 px-2">NÉv</th>
+        <th class="text py-2 px-2">Magasság</th>
+        <th class="text py-2 px-2">Súly</th>
+        <th class="text py-2 px-2">Frissítés</th>
+        <th class="text py-2 px-2">Törlés</th>
       </tr>`;
       ids = [];
       heightStuff(data.list.map((row) => Number(row.height)));
@@ -76,8 +76,8 @@ async function read() {
           <td class="text py-2 px-2"><input type="text" onKeyUp="_validateInput('name-${row.id}')" class="rounded" id="name-${row.id}" value="${row.name}"/></td>
           <td class="text py-2 px-2"><input type="text" onKeyUp="_validateInput('height-${row.id}')" class="rounded" id="height-${row.id}" value="${row.height}"/></td>
           <td class="text py-2 px-2"><input type="text" onKeyUp="_validateInput('weight-${row.id}')" class="rounded" id="weight-${row.id}" value="${row.weight}"/></td>
-          <td class="text py-2 px-2"><a onclick="_edit(${row.id})" class="ptr">Update</a></td>
-          <td class="text py-2 px-2"><a onclick="_del(${row.id})" class="ptr">Delete</a></td>
+          <td class="text py-2 px-2"><a onclick="_edit(${row.id})" class="ptr">Frissítés</a></td>
+          <td class="text py-2 px-2"><a onclick="_del(${row.id})" class="ptr">Törlés</a></td>
         </tr>`;
         ids.push(row.id);
       }
@@ -86,7 +86,7 @@ async function read() {
 }
 
 async function _del(id) {
-  setStatus("Deleting...");
+  setStatus("Törlés...");
   await fetch(url, {
     method: "POST",
     headers: {
@@ -98,19 +98,19 @@ async function _del(id) {
     .then((data) => {
       if (!data.ok) {
         console.log("error");
-        setStatus("Error", true);
+        setStatus("Hiba", true);
         return;
       }
       read();
     })
     .catch((error) => {
       console.log(error);
-      setStatus("Error", true);
+      setStatus("Hiba", true);
     });
 }
 
 async function _edit(id) {
-  setStatus("Editing...");
+  setStatus("Szerkesztés...");
   await fetch(url, {
     method: "POST",
     headers: {
@@ -132,7 +132,7 @@ async function _edit(id) {
     .then((data) => {
       if (!data.ok) {
         console.log("error");
-        setStatus("Error", true);
+        setStatus("Hiba", true);
         return;
       }
       return data.text();
@@ -140,19 +140,19 @@ async function _edit(id) {
     .then((data) => {
       if (Number(data) === 0) {
         console.log("error");
-        setStatus("Error", true);
+        setStatus("Hiba", true);
         return;
       }
       read();
     })
     .catch((error) => {
-      setStatus("Error", true);
+      setStatus("Hiba", true);
       console.log(error);
     });
 }
 
 async function _add() {
-  setStatus("Adding...");
+  setStatus("Hozzá adás...");
   await fetch(url, {
     method: "POST",
     headers: {
@@ -172,7 +172,7 @@ async function _add() {
     .then((data) => {
       if (!data.ok) {
         console.log("error");
-        setStatus("Error", true);
+        setStatus("Hiba", true);
         return;
       }
       return data.text();
@@ -180,13 +180,13 @@ async function _add() {
     .then((data) => {
       if (Number(data) === 0) {
         console.log("error");
-        setStatus("Error", true);
+        setStatus("Hiba", true);
         return;
       }
       read();
     })
     .catch((error) => {
-      setStatus("Error", true);
+      setStatus("Hiba", true);
       console.log(error);
     });
 }
@@ -197,9 +197,9 @@ function appendInsertRow() {
       <td class="text py-2 px-2"><input onKeyUp="_validateInput('name')" class="rounded" id="name" placeholder="Fgh"/></td>
       <td class="text py-2 px-2"><input onKeyUp="_validateInput('height')" class="rounded" id="height" placeholder="12"/></td>
       <td class="text py-2 px-2"><input onKeyUp="_validateInput('weight')" class="rounded" id="weight" placeholder="21"/></td>
-      <td class="text py-2 px-2" colspan="2"><a onclick="_add()" class="ptr">Add</a></td>
+      <td class="text py-2 px-2" colspan="2"><a onclick="_add()" class="ptr">Hozzá Adás</a></td>
   </tr>`;
-  setStatus("Number of rows: " + ids.length);
+  setStatus("Sorok száma: " + ids.length);
 }
 
 function removeInsertRow() {
