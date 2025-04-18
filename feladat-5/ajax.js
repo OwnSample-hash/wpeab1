@@ -292,13 +292,68 @@ async function _add() {
 }
 
 function appendInsertRow() {
-  $("tbl-body").innerHTML += `<tr id="insertRow">
-      <td class="text py-2 px-2">Id</td>
-      <td class="text py-2 px-2"><input onKeyUp="_validateInput('name')" class="rounded" id="name" placeholder="Fgh"/></td>
-      <td class="text py-2 px-2"><input onKeyUp="_validateInput('height')" class="rounded" id="height" placeholder="12"/></td>
-      <td class="text py-2 px-2"><input onKeyUp="_validateInput('weight')" class="rounded" id="weight" placeholder="21"/></td>
-      <td class="text py-2 px-2" colspan="2"><a onclick="_add()" class="ptr">Hozzáadás</a></td>
-  </tr>`;
+  if ($("insertRow") !== null) {
+    return;
+  }
+
+  let tr = document.createElement("tr");
+  tr.id = "insertRow";
+
+  let id = document.createElement("td");
+  id.className = classes;
+  id.innerHTML = "Id";
+  tr.appendChild(id);
+
+  let name = document.createElement("td");
+  name.className = classes;
+  let nameInput = document.createElement("input");
+  nameInput.type = "text";
+  nameInput.className = "rounded";
+  nameInput.id = "name";
+  nameInput.placeholder = "Név";
+  nameInput.onkeyup = function () {
+    _validateInput(nameInput.id);
+  };
+  name.appendChild(nameInput);
+  tr.appendChild(name);
+
+  let height = document.createElement("td");
+  height.className = classes;
+  let heightInput = document.createElement("input");
+  heightInput.type = "text";
+  heightInput.className = "rounded";
+  heightInput.id = "height";
+  heightInput.placeholder = "Magasság";
+  heightInput.onkeyup = function () {
+    _validateInput(heightInput.id);
+  };
+
+  height.appendChild(heightInput);
+  tr.appendChild(height);
+  let weight = document.createElement("td");
+  weight.className = classes;
+  let weightInput = document.createElement("input");
+  weightInput.type = "text";
+  weightInput.className = "rounded";
+  weightInput.id = "weight";
+  weightInput.placeholder = "Súly";
+  weightInput.onkeyup = function () {
+    _validateInput(weightInput.id);
+  };
+  weight.appendChild(weightInput);
+  tr.appendChild(weight);
+
+  let add = document.createElement("td");
+  add.className = classes;
+  let addLink = document.createElement("a");
+  addLink.innerHTML = "Hozzáadás";
+  addLink.className = "ptr";
+  addLink.onclick = function () {
+    _add();
+  };
+  add.appendChild(addLink);
+  tr.appendChild(add);
+  $("tbl-body").appendChild(tr);
   setStatus("Sorok száma: " + ids.length);
 }
 
