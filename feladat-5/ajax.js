@@ -39,6 +39,9 @@ function heightStuff(heights) {
   $("height-max").innerHTML = Math.max(...heights);
 }
 
+const stuffs = ["Id", "Név", "Magasság", "Súly", "Frissítés", "Törlés"];
+const classes = "text py-2 px-2";
+
 async function read() {
   setStatus("Olvasás...");
   await fetch(url, {
@@ -60,29 +63,100 @@ async function read() {
     .then((data) => {
       data = JSON.parse(data);
       removeInsertRow();
-      $("tbl").innerHTML = `<thead>
-      <tr>
-        <th class="text py-2 px-2">Id</th>
-        <th class="text py-2 px-2">Név</th>
-        <th class="text py-2 px-2">Magasság</th>
-        <th class="text py-2 px-2">Súly</th>
-        <th class="text py-2 px-2">Frissítés</th>
-        <th class="text py-2 px-2">Törlés</th>
-      </tr>
-      </thead>
-      <tbody id="tbl-body">`;
+      $("tbl").innerHTML = "";
+
+      let tblHeader = document.createElement("thead");
+
+      let headerRow = document.createElement("tr");
+
+      stuffs.forEach((stuff) => {
+        let th = document.createElement("th");
+        th.className = classes;
+        th.innerHTML = stuff;
+        headerRow.appendChild(th);
+      });
+
+      tblHeader.appendChild(headerRow);
+      $("tbl").appendChild(tblHeader);
+
+      let tblBody = document.createElement("tbody");
+      tblBody.id = "tbl-body";
+      $("tbl").appendChild(tblBody);
       ids = [];
       heightStuff(data.list.map((row) => Number(row.height)));
       sort = data.list.sort((a, b) => a.id - b.id);
+
       for (const row of data.list) {
-        $("tbl").innerHTML += `<tr id="row-${row.id}">
-          <td class="text py-2 px-2">${row.id}</td>
-          <td class="text py-2 px-2"><input type="text" onKeyUp="_validateInput('name-${row.id}')" class="rounded" id="name-${row.id}" value="${row.name}"/></td>
-          <td class="text py-2 px-2"><input type="text" onKeyUp="_validateInput('height-${row.id}')" class="rounded" id="height-${row.id}" value="${row.height}"/></td>
-          <td class="text py-2 px-2"><input type="text" onKeyUp="_validateInput('weight-${row.id}')" class="rounded" id="weight-${row.id}" value="${row.weight}"/></td>
-          <td class="text py-2 px-2"><a onclick="_edit(${row.id})" class="ptr">Frissítés</a></td>
-          <td class="text py-2 px-2"><a onclick="_del(${row.id})" class="ptr">Törlés</a></td>
-        </tr>`;
+        let element = document.createElement("tr");
+        element.id = "row-" + row.id;
+
+        let id = document.createElement("td");
+        id.className = classes;
+        id.innerHTML = row.id;
+        element.appendChild(id);
+
+        let name = document.createElement("td");
+        name.className = classes;
+        let nameInput = document.createElement("input");
+        nameInput.type = "text";
+        nameInput.className = "rounded";
+        nameInput.id = "name-" + row.id;
+        nameInput.value = row.name;
+        nameInput.onkeyup = function () {
+          _validateInput(nameInput.id);
+        };
+        name.appendChild(nameInput);
+        element.appendChild(name);
+
+        let height = document.createElement("td");
+        height.className = classes;
+        let heightInput = document.createElement("input");
+        heightInput.type = "text";
+        heightInput.className = "rounded";
+        heightInput.id = "height-" + row.id;
+        heightInput.value = row.height;
+        heightInput.onkeyup = function () {
+          _validateInput(heightInput.id);
+        };
+        height.appendChild(heightInput);
+        element.appendChild(height);
+
+        let weight = document.createElement("td");
+        weight.className = classes;
+        let weightInput = document.createElement("input");
+        weightInput.type = "text";
+        weightInput.className = "rounded";
+        weightInput.id = "weight-" + row.id;
+        weightInput.value = row.weight;
+        weightInput.onkeyup = function () {
+          _validateInput(weightInput.id);
+        };
+        weight.appendChild(weightInput);
+        element.appendChild(weight);
+
+        let update = document.createElement("td");
+        update.className = classes;
+        let updateLink = document.createElement("a");
+        updateLink.innerHTML = "Frissítés";
+        updateLink.className = "ptr";
+        updateLink.onclick = function () {
+          _edit(row.id);
+        };
+        update.appendChild(updateLink);
+        element.appendChild(update);
+
+        let deleteTd = document.createElement("td");
+        deleteTd.className = classes;
+        let deleteLink = document.createElement("a");
+        deleteLink.innerHTML = "Törlés";
+        deleteLink.className = "ptr";
+        deleteLink.onclick = function () {
+          _del(row.id);
+        };
+        deleteTd.appendChild(deleteLink);
+        element.appendChild(deleteTd);
+
+        $("tbl-body").appendChild(element);
         ids.push(row.id);
       }
       $("tbl").innerHTML += `</tbody>`;
