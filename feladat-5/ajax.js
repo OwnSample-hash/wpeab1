@@ -24,10 +24,11 @@ function _validateInput(fieldId) {
   ) {
     $(fieldId).classList.add("br-red");
     console.log("error for ", fieldId);
-    return;
+    return false;
   }
   $(fieldId).classList.remove("br-red");
   console.log("pass ", fieldId);
+  return true;
 }
 
 function heightStuff(heights) {
@@ -111,6 +112,7 @@ async function _del(id) {
 
 async function _edit(id) {
   setStatus("Szerkesztés...");
+
   await fetch(url, {
     method: "POST",
     headers: {
@@ -153,6 +155,17 @@ async function _edit(id) {
 
 async function _add() {
   setStatus("Hozzáadás...");
+  if (
+    !(
+      _validateInput("name") ||
+      _validateInput("height") ||
+      _validateInput("weight")
+    )
+  ) {
+    console.log("error");
+    setStatus("Hiba", true);
+    return;
+  }
   await fetch(url, {
     method: "POST",
     headers: {
