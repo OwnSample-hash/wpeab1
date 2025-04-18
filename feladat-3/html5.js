@@ -2,7 +2,7 @@ function storeUserString() {
   let userString = document.getElementById("userString").value;
   localStorage.setItem("userString", userString);
   sessionStorage.setItem("userString", userString);
-  document.getElementById("storedData").innerText = "Stored: " + userString;
+  document.getElementById("storedData").innerText = "Mentve: " + userString;
 }
 
 if (window.Worker) {
