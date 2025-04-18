@@ -112,7 +112,17 @@ async function _del(id) {
 
 async function _edit(id) {
   setStatus("Szerkesztés...");
-
+  if (
+    !(
+      _validateInput("name-" + id) ||
+      _validateInput("height-" + id) ||
+      _validateInput("weight-" + id)
+    )
+  ) {
+    console.log("error");
+    setStatus("Hiba", true);
+    return;
+  }
   await fetch(url, {
     method: "POST",
     headers: {
