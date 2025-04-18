@@ -59,7 +59,7 @@ function draw(event) {
   if (!drawing) return;
   ctx.lineWidth = 2;
   ctx.lineCap = "round";
-  ctx.strokeStyle = "black";
+  ctx.strokeStyle = "white";
   ctx.lineTo(event.offsetX, event.offsetY);
   ctx.stroke();
   ctx.beginPath();
