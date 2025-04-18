@@ -61,7 +61,7 @@ async function read() {
       removeInsertRow();
       $("tbl").innerHTML = `<tr>
         <th class="text py-2 px-2">Id</th>
-        <th class="text py-2 px-2">NÉv</th>
+        <th class="text py-2 px-2">Név</th>
         <th class="text py-2 px-2">Magasság</th>
         <th class="text py-2 px-2">Súly</th>
         <th class="text py-2 px-2">Frissítés</th>
@@ -152,7 +152,7 @@ async function _edit(id) {
 }
 
 async function _add() {
-  setStatus("Hozzá adás...");
+  setStatus("Hozzáadás...");
   await fetch(url, {
     method: "POST",
     headers: {
@@ -197,7 +197,7 @@ function appendInsertRow() {
       <td class="text py-2 px-2"><input onKeyUp="_validateInput('name')" class="rounded" id="name" placeholder="Fgh"/></td>
       <td class="text py-2 px-2"><input onKeyUp="_validateInput('height')" class="rounded" id="height" placeholder="12"/></td>
       <td class="text py-2 px-2"><input onKeyUp="_validateInput('weight')" class="rounded" id="weight" placeholder="21"/></td>
-      <td class="text py-2 px-2" colspan="2"><a onclick="_add()" class="ptr">Hozzá Adás</a></td>
+      <td class="text py-2 px-2" colspan="2"><a onclick="_add()" class="ptr">Hozzáadás</a></td>
   </tr>`;
   setStatus("Sorok száma: " + ids.length);
 }
