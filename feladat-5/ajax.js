@@ -111,7 +111,7 @@ async function read() {
         let height = document.createElement("td");
         height.className = classes;
         let heightInput = document.createElement("input");
-        heightInput.type = "text";
+        heightInput.type = "number";
         heightInput.className = "rounded";
         heightInput.id = "height-" + row.id;
         heightInput.value = row.height;
@@ -124,7 +124,7 @@ async function read() {
         let weight = document.createElement("td");
         weight.className = classes;
         let weightInput = document.createElement("input");
-        weightInput.type = "text";
+        weightInput.type = "number";
         weightInput.className = "rounded";
         weightInput.id = "weight-" + row.id;
         weightInput.value = row.weight;
@@ -320,7 +320,7 @@ function appendInsertRow() {
   let height = document.createElement("td");
   height.className = classes;
   let heightInput = document.createElement("input");
-  heightInput.type = "text";
+  heightInput.type = "number";
   heightInput.className = "rounded";
   heightInput.id = "height";
   heightInput.placeholder = "Magasság";
@@ -333,7 +333,7 @@ function appendInsertRow() {
   let weight = document.createElement("td");
   weight.className = classes;
   let weightInput = document.createElement("input");
-  weightInput.type = "text";
+  weightInput.type = "number";
   weightInput.className = "rounded";
   weightInput.id = "weight";
   weightInput.placeholder = "Súly";
